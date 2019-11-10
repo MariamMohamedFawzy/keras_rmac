@@ -9,7 +9,7 @@ from keras import backend as K
 
 import utils
 
-K.set_image_dim_ordering('th')
+K.common.set_image_dim_ordering('th')
 
 import warnings
 warnings.filterwarnings("ignore")
