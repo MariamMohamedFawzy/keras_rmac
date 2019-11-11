@@ -32,6 +32,7 @@ def rmac(input_shape, num_rois):
 
     # Load VGG16
     vgg16_model = VGG16(utils.DATA_DIR + utils.WEIGHTS_FILE, input_shape)
+    # vgg16_model = VGG16(None, input_shape)
 
     # Regions as input
     in_roi = Input(shape=(num_rois, 4), name='input_roi')
@@ -69,6 +70,10 @@ def rmac(input_shape, num_rois):
 
 
 if __name__ == "__main__":
+
+    mat = scipy.io.loadmat(utils.DATA_DIR + utils.PCA_FILE)
+    b = np.squeeze(mat['bias'], axis=1)
+    w = np.transpose(mat['weights'])
 
     # Load sample image
     file = utils.DATA_DIR + 'sample.jpg'
